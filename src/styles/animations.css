@@ -1,0 +1,162 @@
+/* =========================================================
+   RADITHA — THE BIRTHDAY ISSUE
+   Animations & keyframes
+   ========================================================= */
+
+@keyframes loadBar {
+  0% {
+    transform: scaleX(0);
+  }
+  55% {
+    transform: scaleX(0.72);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--fr, 0deg));
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(var(--fr, 0deg));
+  }
+}
+
+@keyframes nudgeDown {
+  0%,
+  100% {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 0.55;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes unfold {
+  0% {
+    opacity: 0;
+    transform: perspective(1100px) rotateX(-16deg) scale(0.94) translateY(-8px);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1100px) rotateX(0) scale(1) translateY(0);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scale(1) rotate(-1.5deg);
+    opacity: 1;
+  }
+  22% {
+    transform: scale(1.06, 0.95) rotate(1.5deg);
+    opacity: 0.94;
+  }
+  44% {
+    transform: scale(0.95, 1.06) rotate(-2deg);
+    opacity: 1;
+  }
+  68% {
+    transform: scale(1.04, 0.98) rotate(2deg);
+    opacity: 0.9;
+  }
+  84% {
+    transform: scale(0.98, 1.03) rotate(-1deg);
+    opacity: 1;
+  }
+}
+
+@keyframes puff {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.6);
+  }
+  16% {
+    opacity: 0.55;
+  }
+  70% {
+    opacity: 0.18;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-74px) scale(1.5);
+  }
+}
+
+@keyframes spinReel {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes eqBounce {
+  0%,
+  100% {
+    height: 3px;
+  }
+  50% {
+    height: 14px;
+  }
+}
+
+@keyframes starDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(12deg);
+    opacity: 0.95;
+  }
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--ctx, 0), var(--cty, 400px), 0) rotate(var(--crot, 240deg));
+    opacity: 0;
+  }
+}
+
+@keyframes hintWiggle {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}

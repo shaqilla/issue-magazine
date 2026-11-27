@@ -1,0 +1,432 @@
+/* =========================================================
+   RADITHA — THE BIRTHDAY ISSUE
+   Global design system
+   ========================================================= */
+
+:root {
+  /* palette */
+  --cream: #f6f0e5;
+  --paper: #fbf7ef;
+  --paper-deep: #efe6d6;
+  --rose: #c98291;
+  --burgundy: #713647;
+  --burgundy-deep: #4e2331;
+  --red: #a65c61;
+  --brown: #8b7666;
+  --butter: #e8d49a;
+  --sage: #a5b59b;
+  --ink: #282323;
+  --ink-70: rgba(40, 35, 35, 0.7);
+  --ink-55: rgba(40, 35, 35, 0.55);
+  --line: rgba(40, 35, 35, 0.14);
+  --line-strong: rgba(40, 35, 35, 0.3);
+
+  /* type */
+  --serif: 'Cormorant Garamond', 'Iowan Old Style', 'Times New Roman', Georgia, serif;
+  --sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --hand: 'Caveat', 'Segoe Script', 'Bradley Hand', cursive;
+
+  /* rhythm */
+  --pad-x: clamp(1.15rem, 5vw, 4.25rem);
+  --maxw: 1340px;
+  --ease: cubic-bezier(0.22, 0.68, 0.24, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* surfaces */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+main {
+  display: block;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(1200px 700px at 82% -10%, rgba(232, 212, 154, 0.35), transparent 60%),
+    radial-gradient(900px 600px at -10% 30%, rgba(201, 130, 145, 0.12), transparent 65%),
+    radial-gradient(800px 620px at 60% 110%, rgba(139, 118, 102, 0.12), transparent 65%);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.62;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+/* film grain over everything */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+  background-image: var(--grain);
+  background-size: 280px 280px;
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--rose);
+  color: var(--cream);
+}
+
+/* ---------- layout helpers ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(4.2rem, 9vw, 8.5rem);
+  scroll-margin-top: 80px;
+}
+
+.section--tight {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+/* ---------- typography helpers ---------- */
+
+.label {
+  font-family: var(--sans);
+  font-size: 0.63rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-70);
+}
+
+.label--accent {
+  color: var(--burgundy);
+}
+
+.hand {
+  font-family: var(--hand);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  color: var(--brown);
+}
+
+.serif {
+  font-family: var(--serif);
+  font-weight: 400;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.8rem, 2vw, 1.4rem);
+  margin-bottom: clamp(2rem, 4.5vw, 3.4rem);
+}
+
+.sec-head__label {
+  white-space: nowrap;
+  color: var(--burgundy);
+}
+
+.sec-head__line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+  transform: translateY(-0.28em);
+}
+
+.sec-head__page {
+  white-space: nowrap;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  color: var(--ink-55);
+}
+
+.sec-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6.4vw, 5.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.008em;
+  text-wrap: balance;
+}
+
+.sec-title em {
+  font-style: italic;
+  color: var(--burgundy);
+}
+
+.sec-sub {
+  max-width: 48ch;
+  margin: 1.2rem 0 0;
+  font-size: 1rem;
+  color: var(--ink-70);
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.55rem;
+  border: 1px solid var(--btn-fg);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.45s var(--ease), border-color 0.45s var(--ease);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--btn-fg);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.5s var(--ease);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  color: var(--cream);
+}
+
+.btn__arrow {
+  display: inline-block;
+  transition: transform 0.45s var(--ease);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.btn--solid {
+  --btn-bg: var(--burgundy);
+  --btn-fg: var(--cream);
+  border-color: var(--burgundy);
+}
+
+.btn--solid::before {
+  background: var(--ink);
+}
+
+.btn--cream {
+  --btn-fg: var(--cream);
+  border-color: rgba(246, 240, 229, 0.55);
+}
+
+.btn--cream::before {
+  background: var(--cream);
+}
+
+.btn--cream:hover,
+.btn--cream:focus-visible {
+  color: var(--ink);
+  border-color: var(--cream);
+}
+
+.btn--sm {
+  padding: 0.7rem 1.1rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--burgundy);
+  outline-offset: 3px;
+}
+
+/* ---------- textures & decorative paper bits ---------- */
+
+.paper {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(120% 90% at 8% 0%, rgba(232, 212, 154, 0.22), transparent 60%),
+    radial-gradient(80% 70% at 100% 100%, rgba(139, 118, 102, 0.14), transparent 65%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.65) inset,
+    0 24px 50px -34px rgba(40, 35, 35, 0.55);
+}
+
+.tape {
+  position: absolute;
+  z-index: 4;
+  width: clamp(76px, 8vw, 112px);
+  height: 26px;
+  background: rgba(232, 212, 154, 0.72);
+  border-left: 1px dashed rgba(40, 35, 35, 0.16);
+  border-right: 1px dashed rgba(40, 35, 35, 0.16);
+  box-shadow: 0 2px 6px -3px rgba(40, 35, 35, 0.35);
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+.tape--rose {
+  background: rgba(201, 130, 145, 0.42);
+}
+
+.stamp {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.55rem 0.7rem;
+  border: 2px solid var(--red);
+  border-radius: 3px;
+  color: var(--red);
+  font-family: var(--sans);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-align: center;
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  transform: rotate(-6deg);
+}
+
+.stamp::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid currentColor;
+  border-radius: 1px;
+  opacity: 0.55;
+}
+
+.stamp--round {
+  border-radius: 50%;
+  padding: 1rem;
+  width: 86px;
+  height: 86px;
+  border-style: dashed;
+  transform: rotate(8deg);
+}
+
+.doodle {
+  color: var(--brown);
+  opacity: 0.85;
+}
+
+.hr-rule {
+  height: 1px;
+  border: 0;
+  background: var(--line);
+  margin: 0;
+}
+
+/* ---------- reveal on scroll ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0) rotate(var(--r, 0deg));
+  transition:
+    opacity 1s var(--ease),
+    transform 1.15s var(--ease);
+  transition-delay: var(--d, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal--left {
+  transform: translate3d(-36px, 0, 0) rotate(var(--r, 0deg));
+}
+
+.reveal--right {
+  transform: translate3d(36px, 0, 0) rotate(var(--r, 0deg));
+}
+
+.reveal--fade {
+  transform: rotate(var(--r, 0deg));
+}
+
+.reveal.is-inview {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(var(--r, 0deg));
+}
+
+/* ---------- ambient floating bits ---------- */
+
+.float {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  animation: floatY 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
